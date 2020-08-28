@@ -1,0 +1,45 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  UpdateRemoteConfigCommand.cpp
+  UpdateLocalConfigCommand.cpp
+  TransportFactory.cpp
+  Transport.cpp
+  TcpDispatcherConnectionDialog.cpp
+  SocketIPv4Transport.cpp
+  ShutdownCommand.cpp
+  ShareWindowCommand.cpp
+  ShareRectCommand.cpp
+  SharePrimaryCommand.cpp
+  ShareFullCommand.cpp
+  ShareDisplayCommand.cpp
+  ShareAppCommand.cpp
+  SetPasswordsDialog.cpp
+  RfbClientInfo.cpp
+  RemoteException.cpp
+  ReloadConfigCommand.cpp
+  OutgoingConnectionDialog.cpp
+  Notificator.cpp
+  NamedPipeTransport.cpp
+  正在生成代码...
+  正在编译...
+  MakeTcpDispatcherConnCommand.cpp
+  MakeRfbConnectionCommand.cpp
+  DispatchCommand.cpp
+  DisconnectAllCommand.cpp
+  ControlTrayIcon.cpp
+  ControlProxy.cpp
+  ControlPipeName.cpp
+  ControlMessage.cpp
+  ControlGate.cpp
+  ControlCommandLine.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  ControlCommand.cpp
+  ControlAuthException.cpp
+  ControlAuthDialog.cpp
+  ControlAuth.cpp
+  ControlApplication.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  ConnectStringParser.cpp
+  ConnectCommand.cpp
+  AboutDialog.cpp
+  正在生成代码...
+  tvncontrol-app.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\tvncontrol-app.lib

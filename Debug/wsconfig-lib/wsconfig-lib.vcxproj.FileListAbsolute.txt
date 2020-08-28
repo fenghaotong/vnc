@@ -1,0 +1,2 @@
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\wsconfig-lib\wsconfig-lib.pdb
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\wsconfig-lib.pdb

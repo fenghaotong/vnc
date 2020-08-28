@@ -1,0 +1,45 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  WsConfigRunner.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  WinEventLogWriter.cpp
+  TvnService.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  TvnServerListener.cpp
+  TvnServerHelp.cpp
+  TvnServerApplication.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  TvnServer.cpp
+  SessionChangesWatcher.cpp
+  ServiceControlCommandLine.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  ServiceControlApplication.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  ServerCommandLine.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  RfbServer.cpp
+  RfbClientManagerEventListener.cpp
+  RfbClientManager.cpp
+  QueryConnectionDialog.cpp
+  QueryConnectionCommandLine.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  QueryConnectionApplication.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  OutgoingRfbConnectionThread.cpp
+  NamingDefs.cpp
+  ExtraRfbServers.cpp
+  正在生成代码...
+  正在编译...
+  DesktopServerCommandLine.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  DesktopServerApplication.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  CrashHook.cpp
+  ControlServer.cpp
+  ControlClient.cpp
+  ControlAppAuthenticator.cpp
+  ConnectToTcpDispatcherThread.cpp
+  AuthTracker.cpp
+  AdditionalActionApplication.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\util\CommandLine.h(35,2): warning C4091: “typedef ”: 没有声明变量时忽略“UseArgument”的左侧
+  正在生成代码...
+  tvnserver-app.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\vnc\Debug\tvnserver-app.lib

@@ -1,0 +1,4 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  WindowsApplication.cpp
+psapi.lib(PSAPI.DLL) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR 已在 Wtsapi32.lib(WTSAPI32.dll) 中定义；已忽略第二个定义
+  win-system.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\win-system.lib

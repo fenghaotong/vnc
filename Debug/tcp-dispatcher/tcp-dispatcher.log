@@ -1,0 +1,5 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  TcpDispatcherInitializer.cpp
+  DispatcherProtocol.cpp
+  正在生成代码...
+  tcp-dispatcher.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\tcp-dispatcher.lib

@@ -1,0 +1,16 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  PixelConverter.cpp
+  EncodingDefs.cpp
+  VendorDefs.cpp
+  TunnelDefs.cpp
+  StandardPixelFormatFactory.cpp
+  RfbKeySym.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\rfb\RfbKeySym.cpp(116,23): warning C4018: “<”: 有符号/无符号不匹配
+  PixelFormat.cpp
+  MsgDefs.cpp
+  HostPath.cpp
+  FrameBuffer.cpp
+  CursorShape.cpp
+  AuthDefs.cpp
+  正在生成代码...
+  rfb.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\rfb.lib

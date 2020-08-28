@@ -1,0 +1,20 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  VideoRegionsConfigDialog.cpp
+  TvnLogFilename.cpp
+  ServerConfigDialog.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\wsconfig-lib\ServerConfigDialog.cpp(278,5): warning C4102: “rr”: 未引用的标签
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\wsconfig-lib\ServerConfigDialog.cpp(497,7): warning C4102: “rr”: 未引用的标签
+  PortMappingDialog.cpp
+  PasswordControl.cpp
+  IpAccessControlDialog.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\wsconfig-lib\IpAccessControlDialog.cpp(391,23): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  EditPortMappingDialog.cpp
+  EditIpAccessRuleDialog.cpp
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\wsconfig-lib\EditIpAccessRuleDialog.cpp(200,31): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\wsconfig-lib\EditIpAccessRuleDialog.cpp(201,30): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  ConfigDialog.cpp
+  CommonInputValidation.cpp
+  ChangePasswordDialog.cpp
+  AdministrationConfigDialog.cpp
+  正在生成代码...
+  wsconfig-lib.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\wsconfig-lib.lib

@@ -1,0 +1,2 @@
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\tvncontrol-app\tvncontrol-app.pdb
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\tvncontrol-app.pdb

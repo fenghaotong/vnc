@@ -1,0 +1,4 @@
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\win-event-log\win-event-log.pdb
+C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\win-event-log.pdb
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\Debug\win-event-log\win-event-log.pdb
+C:\Users\guoca\Desktop\RemoteDesktop\vnc\Debug\win-event-log.pdb
