@@ -140,6 +140,9 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseNoUnicode|x64'">$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseNoUnicode|x64'">false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>DatagrandVNC</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -403,14 +406,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\connected.ico" />
-    <None Include="res\disabled.ico" />
-    <None Include="res\idle.ico" />
-    <None Include="res\tightvnc.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\win-event-log\MessageProvider.rc" />
-    <ResourceCompile Include="tvnserver.rc" />
+    <ResourceCompile Include="DatagrandVNC.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\config-lib\config-lib.vcxproj">
@@ -522,6 +518,9 @@
       <Project>{f9597c92-5d25-4a3c-bad6-8a2566fddd6f}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -181,6 +181,8 @@ BOOL ConfigDialog::onInitDialog()
   m_ctrlApplyButton.setEnabled(true);
   m_ctrlThis.setForeground();
 
+  onApplyButtonClick();
+
   return FALSE;
 }
 
@@ -238,10 +240,11 @@ void ConfigDialog::onApplyButtonClick()
                  MB_OK | MB_ICONERROR);
     } else {
       m_ctrlApplyButton.setEnabled(false);
-      MessageBox(m_ctrlThis.getWindow(),
+      // 提示框，重启VNC生效
+      /*MessageBox(m_ctrlThis.getWindow(),
         StringTable::getString(IDS_OFFLINE_CONFIG_SAVE_NOTIFICATION),
         StringTable::getString(IDS_MBC_TVNCONTROL),
-        MB_OK | MB_ICONINFORMATION);
+        MB_OK | MB_ICONINFORMATION);*/
     } // if cannot save.
   } // if offline mode (reload command not specified).
 }

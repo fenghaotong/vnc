@@ -1,5 +1,0 @@
-﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
-  Configurator.cpp
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\server-config-lib\Configurator.cpp(515,18): warning C4996: '_wcstok': This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\server-config-lib\Configurator.cpp(524,13): warning C4996: '_wcstok': This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  server-config-lib.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\server-config-lib.lib

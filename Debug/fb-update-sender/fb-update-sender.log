@@ -1,9 +1,0 @@
-﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
-  ViewPortState.cpp
-  ViewPort.cpp
-  UpdSenderMsgDefs.cpp
-  UpdateSender.cpp
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\fb-update-sender\UpdateSender.cpp(979,21): warning C4018: “<”: 有符号/无符号不匹配
-  CursorUpdates.cpp
-  正在生成代码...
-  fb-update-sender.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\fb-update-sender.lib

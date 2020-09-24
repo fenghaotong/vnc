@@ -1,9 +1,0 @@
-﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
-  WinFileChannel.cpp
-  WinFile.cpp
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\file-lib\WinFile.cpp(209,28): warning C4244: “return”: 从“LONGLONG”转换到“size_t”，可能丢失数据
-  FileNotFoundException.cpp
-  File.cpp
-  EOFException.cpp
-  正在生成代码...
-  file-lib.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\file-lib.lib

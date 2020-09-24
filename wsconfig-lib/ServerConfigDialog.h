@@ -33,6 +33,8 @@
 
 #include "server-config-lib/ServerConfig.h"
 #include "PasswordControl.h"
+#include <string>
+#include <map>
 
 class ServerConfigDialog : public BaseDialog
 {
@@ -98,6 +100,9 @@ private:
   void onLocalInputPriorityChanged();
   void onInactivityTimeoutUpdate();
   void updateCheckboxesState();
+  std::map<std::string, std::string> ServerConfigDialog::FileToJson(std::string& filepath, std::string& member);
+  std::string ServerConfigDialog::JsonToFile(string& filepath, string& key, string& LocalIP);
+  std::string ServerConfigDialog::TCHAR2STRING(const TCHAR* str);
 
 protected:
   // Configuration

@@ -1,8 +1,0 @@
-﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
-  Region.cpp
-  RectSerializer.cpp
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\region\RectSerializer.cpp(42,7): warning C4996: 'swscanf': This function or variable may be unsafe. Consider using swscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  正在生成代码...
-cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
-  x11region.c
-  region.vcxproj -> C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\region.lib

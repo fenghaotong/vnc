@@ -1,2 +1,0 @@
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\config-lib\config-lib.pdb
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\config-lib.pdb

@@ -1,2 +1,0 @@
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\desktop-ipc\desktop-ipc.pdb
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\desktop-ipc.pdb

@@ -34,9 +34,18 @@
 #include "RConfig.h"
 #include <atlstr.h>
 #include <sstream>
-#include <string>
+#include <fstream>
+#include "rapidjson/prettywriter.h"
+#include "rapidjson/document.h"
+#include "rapidjson/istreamwrapper.h"
+#include <iostream>
+
+#include "util/StringTable.h"
+#include "util/AnsiStringStorage.h"
 
 using namespace rr;
+using namespace std;
+using namespace rapidjson;
 
 // 判断是否在界面选择密码验证
 bool USEAUTHBUTTON = false;
@@ -263,6 +272,33 @@ void ServerConfigDialog::updateUI()
   updateControlDependencies();
 }
 
+void getLocalIP(char* buffer, int buflen)
+{
+    char namebuf[256];
+
+    if (gethostname(namebuf, 256) != 0) {
+        strncpy(buffer, "Host name unavailable", buflen);
+        return;
+    };
+    HOSTENT* ph = gethostbyname(namebuf);
+    if (!ph) {
+        strncpy(buffer, "IP address unavailable", buflen);
+        return;
+    };
+
+    *buffer = '\0';
+    char digtxt[5];
+    for (int i = 0; ph->h_addr_list[i]; i++) {
+        for (int j = 0; j < ph->h_length; j++) {
+            sprintf(digtxt, "%d.", (unsigned char)ph->h_addr_list[i][j]);
+            strncat(buffer, digtxt, (buflen - 1) - strlen(buffer));
+        }
+        buffer[strlen(buffer) - 1] = '\0';
+        if (ph->h_addr_list[i + 1] != 0)
+            strncat(buffer, ", ", (buflen - 1) - strlen(buffer));
+    }
+}
+
 void ServerConfigDialog::apply()
 {
   StringStorage rfbPortText;
@@ -275,50 +311,65 @@ void ServerConfigDialog::apply()
   m_pollingInterval.getText(&pollingIntervalText);
 
   int intVal = 0;
-  rr:RrConfig config;
-  config.ReadConfig("config\\config.ini");
-  std::string PrimaryPassword = config.ReadString("Connection", "PrimaryPassword", "");
-  std::string ViewOnlyPassword = config.ReadString("Connection", "ViewOnlyPassword", "");
-  // MessageBoxA(NULL, PrimaryPassword.c_str(), "PrimaryPassword", MB_OK | MB_OKCANCEL);
-  // MessageBoxA(NULL, ViewOnlyPassword.c_str(), "ViewOnlyPassword", MB_OK | MB_OKCANCEL);
-  int RfbPort = config.ReadInt("Connection", "RfbPort", 5900);
-  int HttpPort = config.ReadInt("Connection", "HttpPort", 5800);
-  int PollingInterval = config.ReadInt("Connection", "PollingInterval", 30);
+  std::string member, filepath, KeyName;
+  std::map<std::string, std::string> result;
+
+  // 获取IP
+  // StringStorage statusString;
+  // char localAddressString[1024];
+  // getLocalIP(localAddressString, 1024);
+  // AnsiStringStorage ansiString(localAddressString);
+  // ansiString.toStringStorage(&statusString);
+  // MessageBoxA(NULL, TCHAR2STRING(statusString.getString()).c_str(), "title", MB_OK | MB_OKCANCEL);
+
   
+  // KeyName = "LocalIP";
+  member = "Server";
+  filepath = "./config/config.json";
+  // 将IP写入Json文件
+  // JsonToFile(filepath, KeyName, TCHAR2STRING(statusString.getString()));
+  // 读取Json文件
+  result = FileToJson(filepath, member);
+  string PrimaryPassword = result["PrimaryPassword"];
+  string ViewOnlyPassword = result["ViewOnlyPassword"];
+  int RfbPort = stoi(result["RfbPort"]);
+  int HttpPort = stoi(result["HttpPort"]);
+  int PollingInterval = stoi(result["PollingInterval"]);
+
   bool EnableFileTransfers;
-  istringstream(config.ReadString("Connection", "PollingInterval", "")) >> boolalpha >> EnableFileTransfers;
-  
+  istringstream(result["PollingInterval"]) >> boolalpha >> EnableFileTransfers;
+
   bool EnableRemovingDesktopWallpaper;
-  istringstream(config.ReadString("Connection", "EnableRemovingDesktopWallpaper", "")) >> boolalpha >> EnableRemovingDesktopWallpaper;
-  
+  istringstream(result["EnableRemovingDesktopWallpaper"]) >> boolalpha >> EnableRemovingDesktopWallpaper;
+
   bool AcceptRfbConnections;
-  istringstream(config.ReadString("Connection", "AcceptRfbConnections", "")) >> boolalpha >> AcceptRfbConnections;
+  istringstream(result["AcceptRfbConnections"]) >> boolalpha >> AcceptRfbConnections;
 
   bool AcceptHttpConnections;
-  istringstream(config.ReadString("Connection", "AcceptHttpConnections", "")) >> boolalpha >> AcceptHttpConnections;
+  istringstream(result["AcceptHttpConnections"]) >> boolalpha >> AcceptHttpConnections;
 
   bool UseAuthentication;
-  istringstream(config.ReadString("Connection", "UseAuthentication", "")) >> boolalpha >> UseAuthentication;
+  istringstream(result["UseAuthentication"]) >> boolalpha >> UseAuthentication;
 
   bool LocalInputPriority;
-  istringstream(config.ReadString("Connection", "LocalInputPriority", "")) >> boolalpha >> LocalInputPriority;
+  istringstream(result["LocalInputPriority"]) >> boolalpha >> LocalInputPriority;
 
-  int InactivityTimeout = config.ReadInt("Connection", "InactivityTimeout", 3);
+  int InactivityTimeout = stoi(result["InactivityTimeout"]);
 
   bool BlockLocalInput;
-  istringstream(config.ReadString("Connection", "BlockLocalInput", "")) >> boolalpha >> BlockLocalInput;
+  istringstream(result["BlockLocalInput"]) >> boolalpha >> BlockLocalInput;
 
   bool BlockRemoteInput;
-  istringstream(config.ReadString("Connection", "BlockRemoteInput", "")) >> boolalpha >> BlockRemoteInput;
+  istringstream(result["BlockRemoteInput"]) >> boolalpha >> BlockRemoteInput;
 
   bool MirrorAllowing;
-  istringstream(config.ReadString("Connection", "MirrorAllowing", "")) >> boolalpha >> MirrorAllowing;
+  istringstream(result["MirrorAllowing"]) >> boolalpha >> MirrorAllowing;
 
   bool D3DAllowing;
-  istringstream(config.ReadString("Connection", "D3DAllowing", "")) >> boolalpha >> D3DAllowing;
+  istringstream(result["D3DAllowing"]) >> boolalpha >> D3DAllowing;
 
   bool ShowTrayIconFlag;
-  istringstream(config.ReadString("Connection", "ShowTrayIconFlag", "")) >> boolalpha >> ShowTrayIconFlag;
+  istringstream(result["ShowTrayIconFlag"]) >> boolalpha >> ShowTrayIconFlag;
 
   // 下面的代码设置了server tab页的值
   StringParser::parseInt(rfbPortText.getString(), &intVal);
@@ -373,8 +424,8 @@ void ServerConfigDialog::apply()
       std::copy(PrimaryPassword.begin(), PrimaryPassword.end(), primaryPassword);
       // MessageBox(NULL, primaryPassword, L"PrimaryPassword", MB_OK | MB_OKCANCEL);
       PrimaryPasswordChange(primaryPassword);
-  }
-  else {
+      delete[] primaryPassword;
+  } else {
       PRIMARYPASSWORDBUTTON = false;
   }
   
@@ -384,8 +435,8 @@ void ServerConfigDialog::apply()
       std::copy(ViewOnlyPassword.begin(), ViewOnlyPassword.end(), viewonlyPassword);
       // MessageBox(NULL, viewonlyPassword, L"ViewonlyPassword", MB_OK | MB_OKCANCEL);
       ReadOnlyPasswordChange(viewonlyPassword);
-  }
-  else {
+      delete[] viewonlyPassword;
+  } else {
       VIEWONLYPASSWORDBUTTON = false;
   }
 
@@ -494,11 +545,13 @@ void ServerConfigDialog::initControls()
 void ServerConfigDialog::updateControlDependencies()
 {
   // 判断是否接受rfb连接
-    rr:RrConfig config;
-    config.ReadConfig("config\\config.ini");
-
+    std::string member, filepath;
+    std::map<std::string, std::string> result;
+    member = "Server";
+    filepath = "./config/config.json";
+    result = FileToJson(filepath, member);
     bool AcceptRfbConnections;
-    istringstream(config.ReadString("Connection", "AcceptRfbConnections", "")) >> boolalpha >> AcceptRfbConnections;
+    istringstream(result["AcceptRfbConnections"]) >> boolalpha >> AcceptRfbConnections;
 
   if (AcceptRfbConnections) {
     m_rfbPort.setEnabled(true);
@@ -680,4 +733,84 @@ void ServerConfigDialog::updateCheckboxesState()
     m_localInputPriorityTimeout.setEnabled(false);
   }
   m_inactivityTimeoutSpin.invalidate();
+}
+
+std::map<string, string> ServerConfigDialog::FileToJson(std::string& filepath, std::string& member) {
+    std::map<string, string> result;
+    ifstream t(filepath.c_str()); // 输入流
+    IStreamWrapper isw(t);
+    Document doc;
+    doc.ParseStream(isw);
+    // 获取对象中的数组，也就是对象是一个数组
+    assert(doc.HasMember(member.c_str()));
+    const Value& infoArray = doc[member.c_str()];
+
+
+    if (infoArray.IsInt()) {
+        result.insert(make_pair(member, to_string(infoArray.GetInt())));
+    }
+    else if (infoArray.IsString()) {
+        result.insert(make_pair(member, infoArray.GetString()));
+    }
+    else if (infoArray.IsArray()) {
+        for (int i = 0; i < infoArray.Size(); i++) {
+            const Value& tempInfo = infoArray[i];
+            for (rapidjson::Value::ConstMemberIterator iter = tempInfo.MemberBegin(); iter != tempInfo.MemberEnd(); iter++) {
+                const char* key = iter->name.GetString();
+                const rapidjson::Value& val = iter->value;
+                result.insert(make_pair(key, val.GetString()));
+            }
+        }
+    }
+    else {
+        for (rapidjson::Value::ConstMemberIterator iter = infoArray.MemberBegin(); iter != infoArray.MemberEnd(); iter++) {
+            const char* key = iter->name.GetString();
+            const rapidjson::Value& val = iter->value;
+            result.insert(make_pair(key, val.GetString()));
+        }
+    }
+
+    if (t.is_open())
+        t.close();
+    return result;
+}
+
+std::string ServerConfigDialog::JsonToFile(string& filepath, string& key, string& LocalIP) {
+
+    // 读取json文件并修改
+    ifstream ifs(filepath);
+    IStreamWrapper isw(ifs);
+    Document doc;
+    doc.ParseStream(isw);
+
+    Value& str = doc[key.c_str()];
+    str.SetString(LocalIP.c_str(), strlen(LocalIP.c_str()));
+
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    doc.Accept(writer);
+    std::string jsonStr(buffer.GetString());
+
+    if (ifs.is_open())
+        ifs.close();
+
+    ofstream outfile;
+    outfile.open(filepath);
+    outfile << jsonStr.c_str() << endl;
+    outfile.close();
+    return  jsonStr.c_str();
+}
+
+std::string ServerConfigDialog::TCHAR2STRING(const TCHAR* str)
+{
+    std::string strstr;
+    try{
+        int iLen = WideCharToMultiByte(CP_ACP, 0, str, -1, NULL, 0, NULL, NULL);
+        char* chRtn = new char[iLen * sizeof(char)];
+        WideCharToMultiByte(CP_ACP, 0, str, -1, chRtn, iLen, NULL, NULL);
+        strstr = chRtn;
+    }
+    catch (std::exception e){
+    }
+    return strstr;
 }

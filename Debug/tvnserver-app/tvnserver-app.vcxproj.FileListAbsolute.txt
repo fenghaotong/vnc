@@ -1,4 +1,0 @@
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\tvnserver-app\tvnserver-app.pdb
-C:\Users\guoca\Desktop\RemoteDesktop\tightvnc-2.8.27-gpl\Debug\tvnserver-app.pdb
-C:\Users\guoca\Desktop\RemoteDesktop\vnc\Debug\tvnserver-app\tvnserver-app.pdb
-C:\Users\guoca\Desktop\RemoteDesktop\vnc\Debug\tvnserver-app.pdb
