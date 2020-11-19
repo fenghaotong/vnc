@@ -28,6 +28,7 @@
 
 #include "file-lib/File.h"
 
+// HACK: ƒ¨»œ≈‰÷√–≈œ¢
 ServerConfig::ServerConfig()
 : m_rfbPort(5900), m_httpPort(5800),
   m_disconnectAction(DA_DO_NOTHING), m_logLevel(0), m_useControlAuth(false),

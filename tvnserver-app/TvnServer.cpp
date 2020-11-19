@@ -82,8 +82,10 @@ TvnServer::TvnServer(bool runsInServiceContext,
 
   // Initialize configuration.
   // FIXME: It looks like configurator may be created as a member object.
+  // HACK: 首先加载注册表中的信息， 加载到ServerConfig m_serverConfig
   Configurator *configurator = Configurator::getInstance();
   configurator->load();
+  // HACK: 如果没有加载注册表中的配置信息，则使用构造函数中的默认值
   m_srvConfig = Configurator::getInstance()->getServerConfig();
 
   try {
@@ -91,6 +93,7 @@ TvnServer::TvnServer(bool runsInServiceContext,
     m_srvConfig->getLogFileDir(&logDir);
     unsigned char logLevel = m_srvConfig->getLogLevel();
     // FIXME: Use correct log name.
+    MessageBox(NULL, logDir.getString(), L"title", MB_OK | MB_OKCANCEL);
     m_logInitListener->onLogInit(logDir.getString(), LogNames::SERVER_LOG_FILE_STUB_NAME, logLevel);
 
   } catch (...) {
@@ -101,12 +104,14 @@ TvnServer::TvnServer(bool runsInServiceContext,
 
   m_log.info(_T("Initialize WinSock"));
 
+  // HACK: 暂时不知道干什么 WindowsSocket
   try {
     WindowsSocket::startup(2, 1);
   } catch (Exception &ex) {
     m_log.interror(_T("%s"), ex.getMessage());
   }
 
+  // HACK: 暂时不知道干什么 DesktopFactory
   DesktopFactory *desktopFactory = 0;
   if (runsInServiceContext) {
     desktopFactory = &m_serviceDesktopFactory;
@@ -114,6 +119,7 @@ TvnServer::TvnServer(bool runsInServiceContext,
     desktopFactory = &m_applicationDesktopFactory;
   }
 
+  // HACK: 暂时不知道干什么 RfbClientManager
   m_rfbClientManager = new RfbClientManager(0, newConnectionEvents, &m_log, desktopFactory);
 
   m_rfbClientManager->addListener(this);
@@ -127,8 +133,10 @@ TvnServer::TvnServer(bool runsInServiceContext,
     // FIXME: Nested lock in protected code (congifuration locking).
     AutoLock l(&m_mutex);
 
+    // HACK: 重启RfbServer
     restartMainRfbServer();
     (void)m_extraRfbServers.reload(m_runAsService, m_rfbClientManager);
+    // HACK: 重启HttpServer
     restartHttpServer();
     restartControlServer();
   }
@@ -371,16 +379,19 @@ void TvnServer::restartMainRfbServer()
 
   stopMainRfbServer();
 
+  // HACK: 检查是否允许Rfb连接
   if (!m_srvConfig->isAcceptingRfbConnections()) {
     return;
   }
 
+  // HACK: 获取监听的地址和端口
   const TCHAR *bindHost = m_srvConfig->isOnlyLoopbackConnectionsAllowed() ? _T("localhost") : _T("0.0.0.0");
   unsigned short bindPort = m_srvConfig->getRfbPort();
 
   m_log.message(_T("Starting main RFB server"));
 
   try {
+    // HACK: 实例化一个RfbServer, 启动RfbServer
     m_rfbServer = new RfbServer(bindHost, bindPort, m_rfbClientManager, m_runAsService, &m_log);
   } catch (Exception &ex) {
     m_log.error(_T("Failed to start main RFB server: \"%s\""), ex.getMessage());

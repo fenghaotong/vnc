@@ -51,6 +51,7 @@ void TvnService::onStart()
   try {
     m_winServiceEvents->enable();
     // FIXME: Use real logger instead of zero.
+    // HACK: 实例化TvnServer
     m_tvnServer = new TvnServer(true, m_newConnectionEvents, this, &m_clientLogger);
     m_tvnServer->addListener(this);
     m_winServiceEvents->onSuccServiceStart();
@@ -59,6 +60,7 @@ void TvnService::onStart()
   }
 }
 
+// HACK: 看着像停止服务的，但是却用了main函数
 void TvnService::main()
 {
   m_shutdownEvent.waitForEvent();

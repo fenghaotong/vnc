@@ -45,6 +45,7 @@ void WINAPI Service::ServiceMain(DWORD dwArgc, LPTSTR *lpszArgv)
   g_service->m_status.dwServiceSpecificExitCode = 0;
 
   try {
+    // HACK: 启动服务
     g_service->onStart();
   } catch (Exception &) {
     g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
@@ -107,12 +108,14 @@ Service::~Service()
   Service::g_service = 0;
 }
 
+// HACK: 启动服务
 void Service::run()
 {
   TCHAR name[1024];
 
   _tcscpy_s(name, 1024, m_name.getString());
 
+  // HACK: 启动服务的方式
   SERVICE_TABLE_ENTRY dispatchTable[] =  {{name, (LPSERVICE_MAIN_FUNCTION)ServiceMain }, { NULL, NULL }};
 
   if (!StartServiceCtrlDispatcher(dispatchTable)) {
